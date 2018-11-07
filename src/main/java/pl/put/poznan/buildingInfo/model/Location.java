@@ -1,14 +1,29 @@
 package pl.put.poznan.buildingInfo.model;
 
+/**
+ * Represents abstract class, gathering common Building, Level and Room properties.
+ * Describes methods extended in other classes
+ */
 public abstract class Location {
     private String id;
     private String name;
 
-    // second constructor due to fact, that name is optional
+
+    /**
+     * Creates Location with certain id
+     *
+     * @param id - unique location id
+     */
     public Location(String id) {
         this.id = id;
     }
 
+    /**
+     * Creates Location with certain id and optional name field
+     *
+     * @param id
+     * @param name
+     */
     public Location(String id, String name) {
         this.id = id;
         this.name = name;

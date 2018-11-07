@@ -2,14 +2,30 @@ package pl.put.poznan.buildingInfo.model;
 
 import java.util.List;
 
+/**
+ * Represents class describing Level, that consist of Rooms
+ */
 public class Level extends Location {
     private List<Room> rooms;
 
+    /**
+     * Constructor creating Level instance with unique location id and list of rooms
+     *
+     * @param id    - unique location id
+     * @param rooms - list of levels that building consists of
+     */
     public Level(String id, List<Room> rooms) {
         super(id);
         this.rooms = rooms;
     }
 
+    /**
+     * Constructor creating Level instance with unique location id, optional location description and list of rooms
+     *
+     * @param id    - unique location id
+     * @param name  - optional name parameter describing location
+     * @param rooms - list of rooms that level consists of
+     */
     public Level(String id, String name, List<Room> rooms) {
         super(id, name);
         this.rooms = rooms;
