@@ -8,7 +8,6 @@ public abstract class Location {
     private String id;
     private String name;
 
-
     /**
      * Creates Location with certain id
      *
