@@ -77,4 +77,30 @@ Work is devided into a few stages:
 [TBD]
 
 ## Classes
-[TBD]
+Our data structures consists of class described below 
+
+```java
+// abstract class aggregating common features and describing interface of our data structures
+public abstract class Location {
+    private String id;
+    private String name;
+}
+
+// building class gathering it's levels
+public class Building extends Location {
+    private List<Level> levels;
+}
+
+// level class gathering it's rooms
+public class Level extends Location {
+    private List<Room> rooms;
+}
+
+// Room class containing information describing certain room
+public class Room extends Location {
+    private Float area;
+    private Float cube;
+    private Float heating;
+    private Float lighting;
+}
+```
