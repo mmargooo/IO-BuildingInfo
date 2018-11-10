@@ -72,7 +72,31 @@ Work is devided into a few stages:
 
 ## API
 ### Request structure
-[TBD]
+* Send building information:
+```
+{
+    id: string,
+    name: string,
+    levels: [
+        {
+            id: string,
+            name: string,
+            rooms: [
+                {
+                    id: string,
+                    name: string,
+                    area: float,
+                    cube: float,
+                    heating: float,
+                    lighting: float,
+                },
+                {...}
+            ]
+        },
+        {...}
+    ]
+}
+```
 ### Response structure
 [TBD]
 
