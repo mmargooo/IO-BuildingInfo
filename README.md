@@ -68,7 +68,13 @@ Work is devided into a few stages:
 * direct merges to `develop` branch are forbidden
 
 ## Commands
-[TBD]
+To make the work with Maven easier below there are some useful commands:
+* `mvn clean` - clean a project
+* `mvn compile` - compile a project
+* `mvn package` - build a package
+* `mvn test` - run unit tests
+* `mvn install` - install a package to local repository
+* `mvn site` - generate a site
 
 ## API
 ### Request structure
