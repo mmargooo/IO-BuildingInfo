@@ -1,21 +1,23 @@
 package pl.put.poznan.buildingInfo.logic;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import pl.put.poznan.buildingInfo.model.Location;
 
 public class BuildingInfo {
 
-    private final String[] buildings;
+    static private HashMap<String, Location> locations = new HashMap<>();
 
-    public BuildingInfo(String[] buildings){
-        this.buildings = buildings;
+    static public HashMap<String, Location> getLocations() {
+        return BuildingInfo.locations;
     }
 
-    public String getBuilding(String buildingName) {
-        String[] filteredBuildings = Arrays.stream(buildings).filter(x -> x.toString().equals(buildingName)).toArray(String[]::new);
+    static public Location getLocation(String key) {
+        return BuildingInfo.locations.get(key);
+    }
 
-        if (filteredBuildings.length > 0)
-            return filteredBuildings[0];
-        else
-            return "Building not found";
+    static public void setLocations(HashMap<String, Location> locations) {
+        BuildingInfo.locations = locations;
     }
 }

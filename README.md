@@ -75,10 +75,35 @@ To make the work with Maven easier below there are some useful commands:
 * `mvn test` - run unit tests
 * `mvn install` - install a package to local repository
 * `mvn site` - generate a site
+* `mvn spring-boot:run` - starts spring-boot server
 
 ## API
 ### Request structure
-[TBD]
+* Send building information:
+```
+{
+    id: string,
+    name: string,
+    levels: [
+        {
+            id: string,
+            name: string,
+            rooms: [
+                {
+                    id: string,
+                    name: string,
+                    area: float,
+                    cube: float,
+                    heating: float,
+                    lighting: float,
+                },
+                {...}
+            ]
+        },
+        {...}
+    ]
+}
+```
 ### Response structure
 [TBD]
 
