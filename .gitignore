@@ -25,3 +25,6 @@ hs_err_pid*
 # IDE config
 .idea
 *.iml
+
+# Maven result directory
+target/
