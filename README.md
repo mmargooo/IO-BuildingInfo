@@ -69,12 +69,12 @@ Work is devided into a few stages:
 
 ## Commands
 To make the work with Maven easier below there are some useful commands:
-* clean a project - mvn clean
-* compile a project - mvn compile
-* build a package - mvn package
-* run unit tests - mvn test
-* install a package to local repository - mvn install
-* generate a site - mvn site
+* `mvn clean` - clean a project
+* `mvn compile` - compile a project
+* `mvn package` - build a package
+* `mvn test` - run unit tests
+* `mvn install` - install a package to local repository
+* `mvn site` - generate a site
 
 ## API
 ### Request structure
