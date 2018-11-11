@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.buildingInfo.logic.BuildingInfo;
 import pl.put.poznan.buildingInfo.model.Building;
 import pl.put.poznan.buildingInfo.model.Location;
+import pl.put.poznan.buildingInfo.model.Response;
 
 import java.util.HashMap;
 
@@ -27,7 +28,9 @@ public class BuildingInfoController {
             level.getRooms().forEach(room -> locations.put(room.getId(), room));
         });
         BuildingInfo.setLocations(locations);
-        return gson.toJson("Building " + building.getId() + " successfully created");
+        Response response = new Response("success");
+        response.setMessage("Building id: " + building.getId() + " successfully created");
+        return gson.toJson(response, Response.class);
     }
 
     @RequestMapping(value = "/area/{id}", method = RequestMethod.GET, produces = "application/json")
@@ -36,8 +39,12 @@ public class BuildingInfoController {
         Location location = BuildingInfo.getLocation(id);
         if (location == null) {
             logger.debug("Such location doesnt exist");
-            return "{\"status\": \"failure\", \"value\":\"Location doesnt exist\"}";
+            Response response = new Response("failure");
+            response.setMessage("Location doesn't exist");
+            return gson.toJson(response, Response.class);
         }
-        return "{\"status\": \"success\", \"value\": \"" + location.getArea() + "\"}";
+        Response response = new Response("success");
+        response.setValue(location.getArea());
+        return gson.toJson(response, Response.class);
     }
 }
