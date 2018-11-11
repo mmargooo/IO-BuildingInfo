@@ -39,16 +39,21 @@ public class Building extends Location {
         this.levels = levels;
     }
 
+    /**
+     * Function that return area of whole building.
+     *
+     * @return area of all levels
+     */
     public Float getArea() {
-        // calculate area of all levels
-
-        // return temporary value in order to compile code properly
         return (float) (levels.stream().mapToDouble(Level::getArea)).sum();
     }
 
+    /**
+     * Function that return cubage of whole building.
+     *
+     * @return cubage of all levels
+     */
     public Float getCube() {
-        // calculate cubage of all levels
-        
         return (float) (levels.stream().mapToDouble(Location::getCube)).sum();
     }
 
