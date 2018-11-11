@@ -57,4 +57,24 @@ public class BuildingInfoController {
         response.setValue(location.getArea());
         return gson.toJson(response, Response.class);
     }
+
+    /**
+     * Function that returns cube of asked location.
+     *
+     * @param id - id of the location.
+     */
+    @RequestMapping(value = "/cube/{id}", method = RequestMethod.GET, produces = "application/json")
+    public String getCube(@PathVariable String id) {
+        logger.debug("getCube " + id);
+        Location location = BuildingInfo.getLocation(id);
+        if (location == null) {
+            logger.debug("Such location doesnt exist");
+            Response response = new Response("failure");
+            response.setMessage("Location doesn't exist");
+            return gson.toJson(response, Response.class);
+        }
+        Response response = new Response("success");
+        response.setValue(location.getCube());
+        return gson.toJson(response, Response.class);
+    }
 }
