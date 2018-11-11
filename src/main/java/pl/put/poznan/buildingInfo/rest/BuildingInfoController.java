@@ -18,6 +18,11 @@ public class BuildingInfoController {
     private static final Logger logger = LoggerFactory.getLogger(BuildingInfoController.class);
     private static final Gson gson = new Gson();
 
+    /**
+     * Endpoint that creats Building instance from JSON placed in request's body. Takes JSON and produces JSON.
+     *
+     * @param payload - contains JSON to create proper Building instance.
+     */
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
     public String createBuilding(@RequestBody String payload) {
         HashMap<String, Location> locations = new HashMap<>();
@@ -33,6 +38,11 @@ public class BuildingInfoController {
         return gson.toJson(response, Response.class);
     }
 
+    /**
+     * Function that returns area of asked location.
+     *
+     * @param id - id of the location.
+     */
     @RequestMapping(value = "/area/{id}", method = RequestMethod.GET, produces = "application/json")
     public String getArea(@PathVariable String id) {
         logger.debug("getArea " + id);
