@@ -48,9 +48,8 @@ public class Building extends Location {
 
     public Float getCube() {
         // calculate cubage of all levels
-
-        // return temporary value in order to compile code properly
-        return (float) 0.0;
+        
+        return (float) (levels.stream().mapToDouble(Location::getCube)).sum();
     }
 
     public Float getHeating() {
