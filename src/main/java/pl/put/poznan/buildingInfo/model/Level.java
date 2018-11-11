@@ -39,15 +39,22 @@ public class Level extends Location {
         this.rooms = rooms;
     }
 
+    /**
+     * Function that return area of whole level.
+     *
+     * @return area of all rooms on this level.
+     */
     public Float getArea() {
         return (float) (rooms.stream().mapToDouble(Room::getArea)).sum();
     }
 
+    /**
+     * Function that return cubage of whole level.
+     *
+     * @return cubage of all rooms on this level
+     */
     public Float getCube() {
-        // calculate cubage of all levels
-
-        // return temporary value in order to compile code properly
-        return (float) 0.0;
+        return (float) (rooms.stream().mapToDouble(Room::getCube)).sum();
     }
 
     public Float getHeating() {
