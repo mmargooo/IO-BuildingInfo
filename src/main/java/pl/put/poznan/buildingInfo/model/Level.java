@@ -40,10 +40,7 @@ public class Level extends Location {
     }
 
     public Float getArea() {
-        // calculate area of all levels
-
-        // return temporary value in order to compile code properly
-        return (float) 0.0;
+        return (float) (rooms.stream().mapToDouble(Room::getArea)).sum();
     }
 
     public Float getCube() {

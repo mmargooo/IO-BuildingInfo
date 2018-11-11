@@ -43,7 +43,7 @@ public class Building extends Location {
         // calculate area of all levels
 
         // return temporary value in order to compile code properly
-        return (float) 0.0;
+        return (float) (levels.stream().mapToDouble(Level::getArea)).sum();
     }
 
     public Float getCube() {
