@@ -105,7 +105,40 @@ To make the work with Maven easier below there are some useful commands:
 }
 ```
 ### Response structure
-[TBD]
+Response structure depends request type
+* sending building structure
+```
+{
+    status: string,
+    message: string
+}
+```
+
+* requesting information about locations features
+```
+{
+    status: string,
+    value: float
+}
+```
+
+* requesting list of rooms exceeding certain level of heating energy
+```
+{
+    status: string,
+    results: [
+        {
+            id: string,
+            name: string,
+            area: float,
+            cube: float,
+            heating: float,
+            lighting: float,
+        },
+        {...}
+    ]
+}
+```
 
 ## Classes
 Our data structures consists of class described below 
