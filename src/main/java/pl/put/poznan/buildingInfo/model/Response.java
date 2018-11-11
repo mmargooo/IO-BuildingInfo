@@ -2,6 +2,13 @@ package pl.put.poznan.buildingInfo.model;
 
 import java.util.ArrayList;
 
+/**
+ * class responsible for structuring server's response.
+ * Depends on request type creates proper response
+ * status - information if request succeeded or failed
+ * value - requested location parameter
+ * results - list of Rooms exceeding certain level of heating energy
+ */
 public class Response {
     private String status;
     private Float value;
