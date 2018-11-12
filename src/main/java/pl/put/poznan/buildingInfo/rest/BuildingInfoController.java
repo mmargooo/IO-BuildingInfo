@@ -133,6 +133,12 @@ public class BuildingInfoController {
             response.setMessage("Location doesn't exist");
             return gson.toJson(response, Response.class);
         }
+        else if (!(location instanceof Building)) {
+            logger.debug("Location is not an instance of Building");
+            Response response = new Response("failure");
+            response.setMessage("Location is not an instance of Building");
+            return gson.toJson(response, Response.class);
+        }
         Response response = new Response("succes");
         response.setResults(((Building) location).getExceedingRooms());
         return gson.toJson(response, Response.class);
