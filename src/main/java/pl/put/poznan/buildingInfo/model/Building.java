@@ -64,10 +64,7 @@ public class Building extends Location {
         return (float) 0.0;
     }
 
-    public Float getLighting() {
-        // calculate lighting power of all levels
-
-        // return temporary value in order to compile code properly
-        return (float) 0.0;
+    public Float getLighting()  {
+        return (float) (levels.stream().mapToDouble(Location::getLighting)).sum();
     }
 }
