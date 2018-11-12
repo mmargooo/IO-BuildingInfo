@@ -1,3 +1,5 @@
+![Build status](https://travis-ci.org/mmargooo/IO-BuildingInfo.svg?branch=develop)
+
 # IO-BuildingInfo
 
 This application allows clients to send requests containing information about building to the server
