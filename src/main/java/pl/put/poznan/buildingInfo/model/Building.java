@@ -1,12 +1,15 @@
 package pl.put.poznan.buildingInfo.model;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * Represents class describing Building, that consist of Levels
  */
 public class Building extends Location {
     private List<Level> levels;
+    private float heatingLimit;
 
     /**
      * Constructor creating Building instance with unique location id and list of levels
@@ -29,6 +32,12 @@ public class Building extends Location {
     public Building(String id, String name, List<Level> levels) {
         super(id, name);
         this.levels = levels;
+    }
+
+    public Building(String id, String name, List<Level> levels, float heatingLimit) {
+        super(id, name);
+        this.levels = levels;
+        this.heatingLimit = heatingLimit;
     }
 
     public List<Level> getLevels() {
@@ -69,5 +78,17 @@ public class Building extends Location {
 
         // return temporary value in order to compile code properly
         return (float) 0.0;
+    }
+
+    public float getHeatingLimit() {
+        return heatingLimit;
+    }
+
+    public void setHeatingLimit(float heatingLimit) {
+        this.heatingLimit = heatingLimit;
+    }
+    public ArrayList<Room> getExceedingRooms() {
+        ArrayList<ArrayList<Room>> ar = (ArrayList) levels.stream().map(f -> f.getExceedingRooms(heatingLimit)).collect(Collectors.toList());
+        return (ArrayList) ar.stream().flatMap(List::stream).collect(Collectors.toList());
     }
 }

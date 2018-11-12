@@ -77,4 +77,19 @@ public class BuildingInfoController {
         response.setValue(location.getCube());
         return gson.toJson(response, Response.class);
     }
+
+    @RequestMapping(value = "/exceeding/{id}", method = RequestMethod.GET, produces = "application/json")
+    public String getExceedingRooms(@PathVariable String id) {
+        logger.debug("getExceedingRooms " + id);
+        Location location = BuildingInfo.getLocation(id);
+        if (location == null) {
+            logger.debug("Such location doesnt exist");
+            Response response = new Response("failure");
+            response.setMessage("Location doesn't exist");
+            return gson.toJson(response, Response.class);
+        }
+        Response response = new Response("succes");
+        response.setResults(((Building) location).getExceedingRooms());
+        return gson.toJson(response, Response.class);
+    }
 }
