@@ -1,6 +1,8 @@
 package pl.put.poznan.buildingInfo.model;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * Represents class describing Level, that consist of Rooms
@@ -73,5 +75,14 @@ public class Level extends Location {
      */
     public Float getLighting()  {
         return (float) (rooms.stream().mapToDouble(Room::getLighting)).sum();
+    }
+
+    /**
+     * Function that returns rooms exceeding the heating limit.
+     *
+     * @return ArrayList of rooms
+     */
+    public ArrayList<Room> getExceedingRooms(float limit) {
+        return (ArrayList) (rooms.stream().filter(room -> room.getHeating()/room.getCube() > limit).collect(Collectors.toList()));
     }
 }

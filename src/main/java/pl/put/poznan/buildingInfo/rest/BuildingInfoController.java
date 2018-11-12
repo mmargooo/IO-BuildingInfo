@@ -117,4 +117,30 @@ public class BuildingInfoController {
         response.setValue(location.heatingPerCube());
         return gson.toJson(response, Response.class);
     }
+
+    /**
+     * Function that returns list of rooms exceeding the heating limit in given building.
+     *
+     * @param id - id of the location.
+     */
+    @RequestMapping(value = "/exceeding/{id}", method = RequestMethod.GET, produces = "application/json")
+    public String getExceedingRooms(@PathVariable String id) {
+        logger.debug("getExceedingRooms " + id);
+        Location location = BuildingInfo.getLocation(id);
+        if (location == null) {
+            logger.debug("Such location doesnt exist");
+            Response response = new Response("failure");
+            response.setMessage("Location doesn't exist");
+            return gson.toJson(response, Response.class);
+        }
+        else if (!(location instanceof Building)) {
+            logger.debug("Location is not an instance of Building");
+            Response response = new Response("failure");
+            response.setMessage("Location is not an instance of Building");
+            return gson.toJson(response, Response.class);
+        }
+        Response response = new Response("succes");
+        response.setResults(((Building) location).getExceedingRooms());
+        return gson.toJson(response, Response.class);
+    }
 }
