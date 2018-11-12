@@ -73,6 +73,11 @@ public class Level extends Location {
         return (float) 0.0;
     }
 
+    /**
+     * Function that returns rooms exceeding the heating limit.
+     *
+     * @return ArrayList of rooms
+     */
     public ArrayList<Room> getExceedingRooms(float limit) {
         return (ArrayList) (rooms.stream().filter(room -> room.getHeating()/room.getCube() > limit).collect(Collectors.toList()));
     }

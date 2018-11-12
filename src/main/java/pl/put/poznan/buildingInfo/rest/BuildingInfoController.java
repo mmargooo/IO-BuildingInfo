@@ -78,6 +78,11 @@ public class BuildingInfoController {
         return gson.toJson(response, Response.class);
     }
 
+    /**
+     * Function that returns list of rooms exceeding the heating limit in given building.
+     *
+     * @param id - id of the location.
+     */
     @RequestMapping(value = "/exceeding/{id}", method = RequestMethod.GET, produces = "application/json")
     public String getExceedingRooms(@PathVariable String id) {
         logger.debug("getExceedingRooms " + id);

@@ -34,6 +34,14 @@ public class Building extends Location {
         this.levels = levels;
     }
 
+    /**
+     * Constructor creating Building instance with unique location id, optional name parameter and list of levels
+     *
+     * @param id     - unique location id
+     * @param name   - optional name parameter describing location
+     * @param levels - list of levels that building consists of
+     * @param heatingLimit - optional parameter describing heating limit per room
+     */
     public Building(String id, String name, List<Level> levels, float heatingLimit) {
         super(id, name);
         this.levels = levels;
@@ -84,6 +92,11 @@ public class Building extends Location {
         return heatingLimit;
     }
 
+    /**
+     * Function that returns rooms exceeding the heating limit.
+     *
+     * @return ArrayList of rooms
+     */
     public void setHeatingLimit(float heatingLimit) {
         this.heatingLimit = heatingLimit;
     }
