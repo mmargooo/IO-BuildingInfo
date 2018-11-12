@@ -52,5 +52,10 @@ public abstract class Location {
 
     public abstract Float getLighting();
 
+    /**
+     * Function that return lightning per area of the location.
+     *
+     * @return lightning per area of the location
+     */
     public Float lightningPerArea() { return this.getLighting()/this.getArea(); }
 }

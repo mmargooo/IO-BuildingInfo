@@ -64,6 +64,11 @@ public class Building extends Location {
         return (float) 0.0;
     }
 
+    /**
+     * Function that return lightning of whole building.
+     *
+     * @return lightning of all levels
+     */
     public Float getLighting()  {
         return (float) (levels.stream().mapToDouble(Location::getLighting)).sum();
     }
