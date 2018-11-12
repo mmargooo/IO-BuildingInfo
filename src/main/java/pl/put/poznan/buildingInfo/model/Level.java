@@ -57,17 +57,19 @@ public class Level extends Location {
         return (float) (rooms.stream().mapToDouble(Room::getCube)).sum();
     }
 
-    public Float getHeating() {
-        // calculate heating demand of all levels
-
-        // return temporary value in order to compile code properly
-        return (float) 0.0;
+    /**
+     * Function that return heating of whole level.
+     *
+     * @return heating of all rooms on this level
+     */
+    public Float getHeating()  {
+        return (float) (rooms.stream().mapToDouble(Room::getHeating)).sum();
     }
 
     /**
-     * Function that return lightning of whole level.
+     * Function that return lighting of whole level.
      *
-     * @return lightning of all rooms on this level
+     * @return lighting of all rooms on this level
      */
     public Float getLighting()  {
         return (float) (rooms.stream().mapToDouble(Room::getLighting)).sum();
