@@ -77,4 +77,24 @@ public class BuildingInfoController {
         response.setValue(location.getCube());
         return gson.toJson(response, Response.class);
     }
+
+    /**
+     * Function that returns lightning per area of asked location.
+     *
+     * @param id - id of the location.
+     */
+    @RequestMapping(value = "/lightningPerArea/{id}", method = RequestMethod.GET, produces = "application/json")
+    public String lightningPerArea(@PathVariable String id) {
+        logger.debug("lightningPerArea " + id);
+        Location location = BuildingInfo.getLocation(id);
+        if (location == null) {
+            logger.debug("Such location doesnt exist");
+            Response response = new Response("failure");
+            response.setMessage("Location doesn't exist");
+            return gson.toJson(response, Response.class);
+        }
+        Response response = new Response("success");
+        response.setValue(location.lightningPerArea());
+        return gson.toJson(response, Response.class);31
+    }
 }
