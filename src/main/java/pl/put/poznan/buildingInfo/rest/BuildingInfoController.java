@@ -105,7 +105,7 @@ public class BuildingInfoController {
      */
     @RequestMapping(value = "/heatingPerCube/{id}", method = RequestMethod.GET, produces = "application/json")
     public String heatingPerCube(@PathVariable String id) {
-        logger.debug("lightingPerArea " + id);
+        logger.debug("heatingPerCube " + id);
         Location location = BuildingInfo.getLocation(id);
         if (location == null) {
             logger.debug("Such location doesnt exist");
