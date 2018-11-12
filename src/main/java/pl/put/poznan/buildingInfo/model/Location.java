@@ -51,4 +51,6 @@ public abstract class Location {
     public abstract Float getHeating();
 
     public abstract Float getLighting();
+
+    public Float lightningPerArea() { return this.getLighting()/this.getArea(); }
 }
