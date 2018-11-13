@@ -5,7 +5,15 @@ package pl.put.poznan.buildingInfo.model;
  * Describes methods extended in other classes
  */
 public abstract class Location {
+
+    /**
+     * Location's unique id used to retrieve information
+     */
     private String id;
+
+    /**
+     * Name describing location (optional)
+     */
     private String name;
 
     /**
@@ -20,8 +28,8 @@ public abstract class Location {
     /**
      * Creates Location with certain id and optional name field
      *
-     * @param id
-     * @param name
+     * @param id - unique location id
+     * @param name - optional name parameter describing location
      */
     public Location(String id, String name) {
         this.id = id;

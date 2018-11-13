@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
  * Represents class describing Level, that consist of Rooms
  */
 public class Level extends Location {
+
+    /**
+     * List of rooms on the level
+     */
     private List<Room> rooms;
 
     /**
@@ -80,6 +84,7 @@ public class Level extends Location {
     /**
      * Function that returns rooms exceeding the heating limit.
      *
+     * @param limit - maximal usage of energy/m^3 per room
      * @return ArrayList of rooms
      */
     public ArrayList<Room> getExceedingRooms(float limit) {
