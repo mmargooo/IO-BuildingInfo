@@ -84,6 +84,7 @@ To make the work with Maven easier below there are some useful commands:
 {
     id: string,
     name: string,
+    heatingLimit: float,
     levels: [
         {
             id: string,
@@ -105,7 +106,7 @@ To make the work with Maven easier below there are some useful commands:
 }
 ```
 ### Response structure
-Response structure depends request type
+Response structure depends on request type
 * sending building structure
 ```
 {
@@ -153,6 +154,7 @@ public abstract class Location {
 // building class gathering it's levels
 public class Building extends Location {
     private List<Level> levels;
+    private float heatingLimit;
 }
 
 // level class gathering it's rooms
