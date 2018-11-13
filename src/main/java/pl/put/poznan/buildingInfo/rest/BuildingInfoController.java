@@ -33,6 +33,7 @@ public class BuildingInfoController {
             level.getRooms().forEach(room -> locations.put(room.getId(), room));
         });
         BuildingInfo.setLocations(locations);
+        logger.info("The building " + building.getId() + " was successfully created");
         Response response = new Response("success");
         response.setMessage("Building id: " + building.getId() + " successfully created");
         return gson.toJson(response, Response.class);
@@ -53,6 +54,7 @@ public class BuildingInfoController {
             response.setMessage("Location doesn't exist");
             return gson.toJson(response, Response.class);
         }
+        logger.info("The area was successfully given");
         Response response = new Response("success");
         response.setValue(location.getArea());
         return gson.toJson(response, Response.class);
@@ -73,6 +75,7 @@ public class BuildingInfoController {
             response.setMessage("Location doesn't exist");
             return gson.toJson(response, Response.class);
         }
+        logger.info("The cube was successfully given");
         Response response = new Response("success");
         response.setValue(location.getCube());
         return gson.toJson(response, Response.class);
@@ -93,6 +96,7 @@ public class BuildingInfoController {
             response.setMessage("Location doesn't exist");
             return gson.toJson(response, Response.class);
         }
+        logger.info("The value of lighting per area was successfully given");
         Response response = new Response("success");
         response.setValue(location.lightingPerArea());
         return gson.toJson(response, Response.class);
@@ -113,6 +117,7 @@ public class BuildingInfoController {
             response.setMessage("Location doesn't exist");
             return gson.toJson(response, Response.class);
         }
+        logger.info("The value of heating per cube was successfully given");
         Response response = new Response("success");
         response.setValue(location.heatingPerCube());
         return gson.toJson(response, Response.class);
