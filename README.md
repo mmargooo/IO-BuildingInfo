@@ -84,6 +84,7 @@ To make the work with Maven easier below there are some useful commands:
 {
     id: string,
     name: string,
+    heatingLimit: float,
     levels: [
         {
             id: string,
@@ -105,7 +106,7 @@ To make the work with Maven easier below there are some useful commands:
 }
 ```
 ### Response structure
-Response structure depends request type
+Response structure depends on request type
 * sending building structure
 ```
 {
@@ -140,6 +141,18 @@ Response structure depends request type
 }
 ```
 
+### Request path
+To retrieve data, requests need to have a specific path and an adequate
+request method
+#### Method - POST
+* /api/new - create a new building
+#### Method - GET
+* /api/area/{id} - retrieve the area of location
+* /api/cube/{id} - retrieve the cubage of location
+* /api/lightingPerArea/{id} - retrieve the illumination level per m^2
+* /api/heatingPerCube/{id} - retrieve the usage of energy used on heating per m^3
+* /api/exceeding/{id} - retrieve the list of rooms exceeding the energy/m^3 limit
+
 ## Classes
 Our data structures consists of class described below 
 
@@ -153,6 +166,7 @@ public abstract class Location {
 // building class gathering it's levels
 public class Building extends Location {
     private List<Level> levels;
+    private float heatingLimit;
 }
 
 // level class gathering it's rooms
