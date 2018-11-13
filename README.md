@@ -86,6 +86,7 @@ To make the work with Maven easier below there are some useful commands:
 {
     id: string,
     name: string,
+    heatingLimit: float,
     levels: [
         {
             id: string,
