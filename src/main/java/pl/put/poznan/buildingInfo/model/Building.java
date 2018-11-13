@@ -8,7 +8,15 @@ import java.util.stream.Collectors;
  * Represents class describing Building, that consist of Levels
  */
 public class Building extends Location {
+
+    /**
+     * List of levels inside the building
+     */
     private List<Level> levels;
+
+    /**
+     * Maximal usage of energy/m^3 per room (optional)
+     */
     private float heatingLimit;
 
     /**
