@@ -141,6 +141,18 @@ Response structure depends on request type
 }
 ```
 
+### Request path
+To retrieve data, requests need to have a specific path and an adequate
+request method
+#### Method - POST
+* /api/new - create a new building
+#### Method - GET
+* /api/area/{id} - retrieve the area of location
+* /api/cube/{id} - retrieve the cubage of location
+* /api/lightingPerArea/{id} - retrieve the illumination level per m^2
+* /api/heatingPerCube/{id} - retrieve the usage of energy used on heating per m^3
+* /api/exceeding/{id} - retrieve the list of rooms exceeding the energy/m^3 limit
+
 ## Classes
 Our data structures consists of class described below 
 
