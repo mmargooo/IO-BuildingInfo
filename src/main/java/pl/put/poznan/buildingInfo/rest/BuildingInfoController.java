@@ -160,6 +160,7 @@ public class BuildingInfoController {
             response.setMessage("Location is not an instance of Building");
             return gson.toJson(response, Response.class);
         }
+        logger.info("The rooms that exceed the heating limit were successfully given");
         Response response = new Response("succes");
         response.setResults(((Building) location).getExceedingRooms());
         return gson.toJson(response, Response.class);
