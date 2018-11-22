@@ -1,5 +1,7 @@
 package pl.put.poznan.buildingInfo.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.ArrayList;
 
 /**
@@ -15,16 +17,20 @@ public class Response {
     /**
      * Requested location parameter
      */
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Float value;
 
     /**
      * Message sent to the user about the request status
      */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String message;
 
     /**
      * List of Rooms exceeding certain level of heating energy
      */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private ArrayList<Room> results;
 
     public Response(String status) {

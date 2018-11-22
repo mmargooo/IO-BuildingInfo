@@ -1,12 +1,10 @@
-package pl.put.poznan.buildingInfo.app;
+package pl.put.poznan.buildingInfo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-@SpringBootApplication(scanBasePackages = {"pl.put.poznan.buildingInfo.rest"})
+@SpringBootApplication
 public class BuildingInfoApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(BuildingInfoApplication.class, args);
     }
