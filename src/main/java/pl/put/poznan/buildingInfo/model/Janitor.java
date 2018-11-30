@@ -1,6 +1,9 @@
 package pl.put.poznan.buildingInfo.model;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class Janitor {
 
@@ -11,7 +14,7 @@ public class Janitor {
     }
 
     public boolean verifyBuildingStructure () {
-        return verifyBuildingID() && verifyLevelsID() && verifyRoomsID();
+        return verifyBuildingID() && verifyLevelsID() && verifyRoomsID() && verifyUnique();
     }
 
     public boolean verifyBuildingID () {
@@ -30,15 +33,22 @@ public class Janitor {
                 .allMatch(room -> compareLocationID(level, room, 0) && compareLocationID(level, room, 1)));
     }
 
-    public boolean verifyUnique (ArrayList<Location> locationList) {
-        ArrayList<String> IDList = new ArrayList<>();
-        locationList.stream().forEach(location -> IDList.add(location.getId()));
-        return IDList.size() == IDList.stream().distinct().count();
+    public boolean verifyUnique () {
+        boolean levels = building.getLevels().size() == building.getLevels().stream().filter(distinctByKey(level -> level.getId())).count();
+        boolean rooms = building.getLevels().stream()
+            .allMatch(level -> level.getRooms().size() == level.getRooms().stream().filter(distinctByKey(room -> room.getId())).count());
+        return levels && rooms;
     }
 
     public boolean compareLocationID(Location l1, Location l2, int i) {
         String split1[] = l1.getId().split("-");
         String split2[] = l2.getId().split("-");
         return split1.length == 3 && split2.length == 3 && split1[i].equals(split2[i]);
+    }
+
+    public  <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor)
+    {
+        Map<Object, Boolean> map = new ConcurrentHashMap<>();
+        return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
 }
