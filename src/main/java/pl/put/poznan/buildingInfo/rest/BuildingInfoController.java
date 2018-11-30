@@ -43,6 +43,11 @@ public class BuildingInfoController {
             return gson.toJson(res);
         }
         buildingRepository.save(building);
+        Janitor janitor = new Janitor(building);
+        if (!janitor.verifyBuildingStructure()) {
+            Response res = new Response("Couldn't create a new building");
+            return gson.toJson(res);
+        }
         Response res = new Response("Successfully created new building");
         return gson.toJson(res);
     }
