@@ -1,20 +1,32 @@
 package pl.put.poznan.buildingInfo.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import javax.persistence.*;
+
 /**
  * Represents abstract class, gathering common Building, Level and Room properties.
  * Describes methods extended in other classes
  */
+
+@MappedSuperclass
 public abstract class Location {
 
     /**
      * Location's unique id used to retrieve information
      */
+    @Id
     private String id;
 
     /**
      * Name describing location (optional)
      */
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
+
+    public Location() {
+    }
 
     /**
      * Creates Location with certain id

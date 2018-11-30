@@ -1,23 +1,34 @@
 package pl.put.poznan.buildingInfo.logic;
 
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pl.put.poznan.buildingInfo.model.Location;
+import pl.put.poznan.buildingInfo.repository.BuildingRepository;
+import pl.put.poznan.buildingInfo.repository.LevelRepository;
+import pl.put.poznan.buildingInfo.repository.RoomRepository;
 
+@Service
 public class BuildingInfo {
 
-    static private HashMap<String, Location> locations = new HashMap<>();
+    @Autowired
+    private BuildingRepository buildingRepository;
 
-    static public HashMap<String, Location> getLocations() {
-        return BuildingInfo.locations;
-    }
+    @Autowired
+    private LevelRepository levelRepository;
 
-    static public Location getLocation(String key) {
-        return BuildingInfo.locations.get(key);
-    }
+    @Autowired
+    private RoomRepository roomRepository;
 
-    static public void setLocations(HashMap<String, Location> locations) {
-        BuildingInfo.locations = locations;
+    public Location getLocation(String id) {
+        Location location = buildingRepository.findOne(id);
+        if (location == null) {
+            location = levelRepository.findOne(id);
+        }
+        if (location == null) {
+            location = roomRepository.findOne(id);
+        }
+
+        return location;
     }
 }

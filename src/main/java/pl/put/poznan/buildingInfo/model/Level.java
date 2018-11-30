@@ -1,5 +1,8 @@
 package pl.put.poznan.buildingInfo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -7,11 +10,16 @@ import java.util.stream.Collectors;
 /**
  * Represents class describing Level, that consist of Rooms
  */
+@Entity
+@Table(name = "levels")
 public class Level extends Location {
 
     /**
      * List of rooms on the level
      */
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn
     private List<Room> rooms;
 
     /**
@@ -37,6 +45,10 @@ public class Level extends Location {
         this.rooms = rooms;
     }
 
+    public Level() {
+
+    }
+
     public List<Room> getRooms() {
         return rooms;
     }
@@ -50,6 +62,7 @@ public class Level extends Location {
      *
      * @return area of all rooms on this level.
      */
+    @JsonIgnore
     public Float getArea() {
         return (float) (rooms.stream().mapToDouble(Room::getArea)).sum();
     }
@@ -59,6 +72,7 @@ public class Level extends Location {
      *
      * @return cubage of all rooms on this level
      */
+    @JsonIgnore
     public Float getCube() {
         return (float) (rooms.stream().mapToDouble(Room::getCube)).sum();
     }
@@ -68,6 +82,7 @@ public class Level extends Location {
      *
      * @return heating of all rooms on this level
      */
+    @JsonIgnore
     public Float getHeating()  {
         return (float) (rooms.stream().mapToDouble(Room::getHeating)).sum();
     }
@@ -77,6 +92,7 @@ public class Level extends Location {
      *
      * @return lighting of all rooms on this level
      */
+    @JsonIgnore
     public Float getLighting()  {
         return (float) (rooms.stream().mapToDouble(Room::getLighting)).sum();
     }

@@ -1,8 +1,13 @@
 package pl.put.poznan.buildingInfo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Represents class describing Room, that contains features: area, cubage, heating demand and lighting power of certain Room
  */
+@Entity
+@Table(name = "rooms")
 public class Room extends Location {
     private Float area;
     private Float cube;
@@ -42,6 +47,9 @@ public class Room extends Location {
         this.cube = cube;
         this.heating = heating;
         this.lighting = lighting;
+    }
+
+    public Room() {
     }
 
     @Override

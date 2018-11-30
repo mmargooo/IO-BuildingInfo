@@ -1,5 +1,8 @@
 package pl.put.poznan.buildingInfo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -7,11 +10,16 @@ import java.util.stream.Collectors;
 /**
  * Represents class describing Building, that consist of Levels
  */
+@Entity
+@Table(name = "buildings")
 public class Building extends Location {
 
     /**
      * List of levels inside the building
      */
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn
     private List<Level> levels;
 
     /**
@@ -56,6 +64,10 @@ public class Building extends Location {
         this.heatingLimit = heatingLimit;
     }
 
+    public Building() {
+
+    }
+
     public List<Level> getLevels() {
         return levels;
     }
@@ -69,6 +81,7 @@ public class Building extends Location {
      *
      * @return area of all levels
      */
+    @JsonIgnore
     public Float getArea() {
         return (float) (levels.stream().mapToDouble(Level::getArea)).sum();
     }
@@ -78,6 +91,7 @@ public class Building extends Location {
      *
      * @return cubage of all levels
      */
+    @JsonIgnore
     public Float getCube() {
         return (float) (levels.stream().mapToDouble(Location::getCube)).sum();
     }
@@ -87,6 +101,7 @@ public class Building extends Location {
      *
      * @return heating of all levels
      */
+    @JsonIgnore
     public Float getHeating()   {
         return (float) (levels.stream().mapToDouble(Location::getHeating)).sum();
     }
@@ -96,6 +111,8 @@ public class Building extends Location {
      *
      * @return lighting of all levels
      */
+
+    @JsonIgnore
     public Float getLighting()  {
         return (float) (levels.stream().mapToDouble(Location::getLighting)).sum();
     }
@@ -113,6 +130,7 @@ public class Building extends Location {
      *
      * @return ArrayList of rooms
      */
+    @JsonIgnore
     public ArrayList<Room> getExceedingRooms() {
         ArrayList<ArrayList<Room>> ar = (ArrayList) levels.stream().map(f -> f.getExceedingRooms(heatingLimit)).collect(Collectors.toList());
         return (ArrayList) ar.stream().flatMap(List::stream).collect(Collectors.toList());
