@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.buildingInfo.logic.BuildingInfo;
 import pl.put.poznan.buildingInfo.model.Building;
+import pl.put.poznan.buildingInfo.model.Janitor;
 import pl.put.poznan.buildingInfo.model.Location;
 import pl.put.poznan.buildingInfo.model.Response;
 import pl.put.poznan.buildingInfo.repository.BuildingRepository;
@@ -36,6 +37,11 @@ public class BuildingInfoController {
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
     public String createBuilding(@RequestBody String payload) {
         Building building = gson.fromJson(payload, Building.class);
+        Janitor janitor = new Janitor(building);
+        if (!janitor.verifyBuildingStructure()) {
+            Response res = new Response("Couldn't create a new building");
+            return gson.toJson(res);
+        }
         buildingRepository.save(building);
         Response res = new Response("Successfully created new building");
         return gson.toJson(res);
