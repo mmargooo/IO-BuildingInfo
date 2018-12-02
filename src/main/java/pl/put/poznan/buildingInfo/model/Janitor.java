@@ -1,9 +1,14 @@
 package pl.put.poznan.buildingInfo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Janitor {
     public static boolean verifyBuildingStructure (Building building) {
@@ -43,5 +48,42 @@ public class Janitor {
     {
         Map<Object, Boolean> map = new ConcurrentHashMap<>();
         return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+    }
+
+    /**
+     * Function that return lighting per area of the location.
+     *
+     * @return lighting per area of the location
+     */
+    public static Float lightingPerArea(Location location) { return location.getLighting()/location.getArea(); }
+
+    /**
+     * Function that return heating per cube of the location.
+     *
+     * @return heating per cube of the location
+     */
+    public static Float heatingPerCube(Location location) { return location.getHeating()/location.getCube(); }
+
+    /**
+     * Function that returns list of rooms exceeding the heating limit.
+     *
+     * @return ArrayList of rooms
+     */
+    public static ArrayList<Room> getExceedingRooms(Building building) {
+        ArrayList<ArrayList<Room>> ar = (ArrayList) building.getLevels().stream()
+            .map(level -> Janitor.getExceedingRooms(level, building.getHeatingLimit())).collect(Collectors.toList());
+        return (ArrayList) ar.stream().flatMap(List::stream).collect(Collectors.toList());
+    }
+
+    /**
+     * Function that returns list of rooms exceeding the heating limit.
+     *
+     * @param level - floor on which the calculations are computed
+     * @param limit - maximal usage of energy/m^3 per room
+     * @return ArrayList of rooms
+     */
+    public static ArrayList<Room> getExceedingRooms(Level level, float limit) {
+        return (ArrayList) (level.getRooms().stream()
+            .filter(room -> room.getHeating()/room.getCube() > limit).collect(Collectors.toList()));
     }
 }

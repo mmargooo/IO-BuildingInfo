@@ -124,15 +124,4 @@ public class Building extends Location {
     public void setHeatingLimit(float heatingLimit) {
         this.heatingLimit = heatingLimit;
     }
-    
-    /**
-     * Function that returns rooms exceeding the heating limit.
-     *
-     * @return ArrayList of rooms
-     */
-    @JsonIgnore
-    public ArrayList<Room> getExceedingRooms() {
-        ArrayList<ArrayList<Room>> ar = (ArrayList) levels.stream().map(f -> f.getExceedingRooms(heatingLimit)).collect(Collectors.toList());
-        return (ArrayList) ar.stream().flatMap(List::stream).collect(Collectors.toList());
-    }
 }

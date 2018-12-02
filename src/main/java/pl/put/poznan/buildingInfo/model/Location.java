@@ -71,18 +71,4 @@ public abstract class Location {
     public abstract Float getHeating();
 
     public abstract Float getLighting();
-
-    /**
-     * Function that return lighting per area of the location.
-     *
-     * @return lighting per area of the location
-     */
-    public Float lightingPerArea() { return this.getLighting()/this.getArea(); }
-
-    /**
-     * Function that return heating per cube of the location.
-     *
-     * @return heating per cube of the location
-     */
-    public Float heatingPerCube() { return this.getHeating()/this.getCube(); }
 }
