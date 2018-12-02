@@ -111,7 +111,7 @@ public class BuildingInfoController {
         }
         logger.info("The value of lighting per area was successfully given");
         Response response = new Response("success");
-        response.setValue(location.lightingPerArea());
+        response.setValue(Janitor.lightingPerArea(location));
         return gson.toJson(response, Response.class);
     }
 
@@ -134,7 +134,7 @@ public class BuildingInfoController {
         }
         logger.info("The value of heating per cube was successfully given");
         Response response = new Response("success");
-        response.setValue(location.heatingPerCube());
+        response.setValue(Janitor.heatingPerCube(location));
         return gson.toJson(response, Response.class);
     }
 
@@ -164,7 +164,7 @@ public class BuildingInfoController {
         }
         logger.info("The rooms that exceed the heating limit were successfully given");
         Response response = new Response("succes");
-        response.setResults(((Building) location).getExceedingRooms());
+        response.setResults((Janitor.getExceedingRooms((Building) location)));
         return gson.toJson(response, Response.class);
     }
 }
