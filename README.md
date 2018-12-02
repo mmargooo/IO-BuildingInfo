@@ -182,3 +182,9 @@ public class Room extends Location {
     private Float lighting;
 }
 ```
+
+## Database configuration
+* Install PostgreSQL locally
+* Start PostgreSQL service if it is not running
+* Set proper username, password and url to your database in `application.properties`
+* Create database locally e.g. - `createdb -U postgres io_building_info` as `postgres` user
