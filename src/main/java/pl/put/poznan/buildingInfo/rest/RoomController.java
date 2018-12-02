@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/room")
+@RequestMapping(path="/api/room")
 public class RoomController {
 
     private static final Gson gson = new Gson();

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/level")
+@RequestMapping(path="/api/level")
 public class LevelController {
 
     private static final Gson gson = new Gson();

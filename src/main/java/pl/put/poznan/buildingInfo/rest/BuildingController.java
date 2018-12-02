@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/building")
+@RequestMapping(path="/api/building")
 public class BuildingController {
 
     private static final Gson gson = new Gson();
