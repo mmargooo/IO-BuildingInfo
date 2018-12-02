@@ -37,8 +37,7 @@ public class BuildingInfoController {
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
     public String createBuilding(@RequestBody String payload) {
         Building building = gson.fromJson(payload, Building.class);
-        Janitor janitor = new Janitor(building);
-        if (!janitor.verifyBuildingStructure()) {
+        if (!Janitor.verifyBuildingStructure(building)) {
             Response res = new Response("Couldn't create a new building");
             return gson.toJson(res);
         }
