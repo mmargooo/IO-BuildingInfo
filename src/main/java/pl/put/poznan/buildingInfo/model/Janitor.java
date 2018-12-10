@@ -1,7 +1,5 @@
 package pl.put.poznan.buildingInfo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -44,8 +42,7 @@ public class Janitor {
         return split1.length == 3 && split2.length == 3 && split1[i].equals(split2[i]);
     }
 
-    public static  <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor)
-    {
+    public static  <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
         Map<Object, Boolean> map = new ConcurrentHashMap<>();
         return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
