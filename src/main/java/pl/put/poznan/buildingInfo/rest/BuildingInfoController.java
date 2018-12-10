@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.buildingInfo.logic.BuildingInfo;
 import pl.put.poznan.buildingInfo.model.Building;
+import pl.put.poznan.buildingInfo.model.Janitor;
 import pl.put.poznan.buildingInfo.model.Location;
 import pl.put.poznan.buildingInfo.model.Response;
 import pl.put.poznan.buildingInfo.repository.BuildingRepository;
@@ -36,6 +37,10 @@ public class BuildingInfoController {
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
     public String createBuilding(@RequestBody String payload) {
         Building building = gson.fromJson(payload, Building.class);
+        if (!Janitor.verifyBuildingStructure(building)) {
+            Response res = new Response("Couldn't create a new building");
+            return gson.toJson(res);
+        }
         buildingRepository.save(building);
         Response res = new Response("Successfully created new building");
         return gson.toJson(res);
@@ -106,7 +111,7 @@ public class BuildingInfoController {
         }
         logger.info("The value of lighting per area was successfully given");
         Response response = new Response("success");
-        response.setValue(location.lightingPerArea());
+        response.setValue(Janitor.lightingPerArea(location));
         return gson.toJson(response, Response.class);
     }
 
@@ -129,7 +134,7 @@ public class BuildingInfoController {
         }
         logger.info("The value of heating per cube was successfully given");
         Response response = new Response("success");
-        response.setValue(location.heatingPerCube());
+        response.setValue(Janitor.heatingPerCube(location));
         return gson.toJson(response, Response.class);
     }
 
@@ -159,7 +164,7 @@ public class BuildingInfoController {
         }
         logger.info("The rooms that exceed the heating limit were successfully given");
         Response response = new Response("succes");
-        response.setResults(((Building) location).getExceedingRooms());
+        response.setResults((Janitor.getExceedingRooms((Building) location)));
         return gson.toJson(response, Response.class);
     }
 }
