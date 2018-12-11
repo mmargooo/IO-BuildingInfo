@@ -152,6 +152,12 @@ request method
 * /api/lightingPerArea/{id} - retrieve the illumination level per m^2
 * /api/heatingPerCube/{id} - retrieve the usage of energy used on heating per m^3
 * /api/exceeding/{id} - retrieve the list of rooms exceeding the energy/m^3 limit
+* /api/building/ - retrieve information about all buildings
+* /api/building/{id} - retrieve information about certain building
+* /api/level/ - retrieve information about all levels in all buildings
+* /api/level/{id} - retrieve information about certain level
+* /api/room/ - retrieve information about all rooms in all buildings
+* /api/level/{id} - retrieve information about certain room
 
 ## Classes
 Our data structures consists of class described below 
