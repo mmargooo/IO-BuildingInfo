@@ -85,9 +85,6 @@ public class Janitor {
     }
 
     public static boolean verifyUniqueBuildingId(Building building, List<Building> buildings) {
-        String buildingId = building.getId();
-        if (buildings.stream()
-            .filter(b -> b.getId().equals(buildingId)).collect(Collectors.toList()).size() > 0) return false;
-        return true;
+        return buildings.stream().filter(b -> b.getId().equals(building.getId())).collect(Collectors.toList()).size() == 0;
     }
 }

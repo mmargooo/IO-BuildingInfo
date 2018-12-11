@@ -45,7 +45,7 @@ public class BuildingInfoController {
             Response res = new Response("Couldn't create a new building");
             return gson.toJson(res);
         }
-        // verify if locations are unique is unique among all buildings
+        // verify if building is unique among all buildings
         List<Building> buildings = new ArrayList<>();
         buildingRepository.findAll().forEach(buildings::add);
         if (!Janitor.verifyUniqueBuildingId(building,buildings)) {
