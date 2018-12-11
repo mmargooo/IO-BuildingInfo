@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.buildingInfo.model.Level;
-import pl.put.poznan.buildingInfo.model.Response;
 import pl.put.poznan.buildingInfo.repository.LevelRepository;
 
 import java.util.ArrayList;
@@ -30,14 +29,4 @@ public class LevelController {
     public Level getLevel(@PathVariable String id) {
         return levelRepository.findOne(id);
     }
-
-    @PostMapping("/")
-    public Response createLevel(@RequestBody String payload) {
-        Level level = gson.fromJson(payload, Level.class);
-        levelRepository.save(level);
-
-        Response res = new Response("Successfully created new level");
-        return res;
-    }
-
 }

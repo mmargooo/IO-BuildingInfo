@@ -12,6 +12,9 @@ import pl.put.poznan.buildingInfo.model.Location;
 import pl.put.poznan.buildingInfo.model.Response;
 import pl.put.poznan.buildingInfo.repository.BuildingRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class responsible for creating new buildings and and retrieving information about them
  */
@@ -37,8 +40,16 @@ public class BuildingInfoController {
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json")
     public String createBuilding(@RequestBody String payload) {
         Building building = gson.fromJson(payload, Building.class);
+        // verify if location ids corresponds to assumed assumptions for key structure
         if (!Janitor.verifyBuildingStructure(building)) {
             Response res = new Response("Couldn't create a new building");
+            return gson.toJson(res);
+        }
+        // verify if locations are unique is unique among all buildings
+        List<Building> buildings = new ArrayList<>();
+        buildingRepository.findAll().forEach(buildings::add);
+        if (!Janitor.verifyUniqueBuildingId(building,buildings)) {
+            Response res = new Response("Building with such id already exists");
             return gson.toJson(res);
         }
         buildingRepository.save(building);

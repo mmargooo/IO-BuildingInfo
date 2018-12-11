@@ -83,4 +83,11 @@ public class Janitor {
         return (ArrayList) (level.getRooms().stream()
             .filter(room -> room.getHeating()/room.getCube() > limit).collect(Collectors.toList()));
     }
+
+    public static boolean verifyUniqueBuildingId(Building building, List<Building> buildings) {
+        String buildingId = building.getId();
+        if (buildings.stream()
+            .filter(b -> b.getId().equals(buildingId)).collect(Collectors.toList()).size() > 0) return false;
+        return true;
+    }
 }
