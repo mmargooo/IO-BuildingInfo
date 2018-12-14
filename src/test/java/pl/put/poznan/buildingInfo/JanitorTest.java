@@ -37,7 +37,7 @@ public class JanitorTest {
     public void tearDown() {
         building = null;
         levels = null;
-        levels = null;
+        level = null;
         rooms = null;
         room = null;
         exceedingRoom = null;
