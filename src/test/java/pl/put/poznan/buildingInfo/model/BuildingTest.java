@@ -18,13 +18,13 @@ public class BuildingTest {
 
     @Before
     public void setUp() {
-        this.building = new Building();
-        this.levelList = new ArrayList<>();
+        building = new Building();
+        levelList = new ArrayList<>();
     }
 
     @After
     public void destroy() {
-        this.building = null;
+        building = null;
         levelList = null;
     }
 
