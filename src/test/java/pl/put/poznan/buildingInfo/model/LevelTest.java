@@ -28,7 +28,7 @@ public class LevelTest {
     }
 
     @Test
-    public void getArea() {
+    public void getAreaTest() {
         Room room1 = Mockito.mock(Room.class);
         Room room2 = Mockito.mock(Room.class);
         Mockito.when(room1.getArea()).thenReturn((float) 45.0);
@@ -41,7 +41,7 @@ public class LevelTest {
     }
 
     @Test
-    public void getCube() {
+    public void getCubeTest() {
         Room room1 = Mockito.mock(Room.class);
         Room room2 = Mockito.mock(Room.class);
         Mockito.when(room1.getCube()).thenReturn((float) 15.0);
@@ -54,7 +54,7 @@ public class LevelTest {
     }
 
     @Test
-    public void getHeating() {
+    public void getHeatingTest() {
         Room room1 = Mockito.mock(Room.class);
         Room room2 = Mockito.mock(Room.class);
         Mockito.when(room1.getHeating()).thenReturn((float) 5.0);
@@ -67,7 +67,7 @@ public class LevelTest {
     }
 
     @Test
-    public void getLighting() {
+    public void getLightingTest() {
         Room room1 = Mockito.mock(Room.class);
         Room room2 = Mockito.mock(Room.class);
         Mockito.when(room1.getLighting()).thenReturn((float) 7.0);
@@ -80,7 +80,7 @@ public class LevelTest {
     }
 
     @Test
-    public void getRooms() {
+    public void getRoomsTest() {
         Room room1 = Mockito.mock(Room.class);
         Room room2 = Mockito.mock(Room.class);
         roomList.addAll(Arrays.asList(room1, room2));
