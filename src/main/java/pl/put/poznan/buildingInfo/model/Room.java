@@ -9,9 +9,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "rooms")
 public class Room extends Location {
+    
+    /**
+     * Room's area
+     */
     private Float area;
+
+    /**
+     * Room's cubage
+     */
     private Float cube;
+
+    /**
+     * Room's heating
+     */
     private Float heating;
+
+    /**
+     * Room's lightning
+     */
     private Float lighting;
 
     /**
