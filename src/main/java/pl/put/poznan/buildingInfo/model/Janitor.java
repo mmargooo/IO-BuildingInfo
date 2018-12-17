@@ -12,7 +12,8 @@ public class Janitor {
 
     /**
      * Function that combines all other verifying methods and returns whether the building structure is in order
-     * @param building
+     *
+     * @param building - building whose structure is verified
      * @return true if building structure is correct, false otherwise
      */
     public static boolean verifyBuildingStructure (Building building) {
@@ -22,7 +23,7 @@ public class Janitor {
     /**
      * Function that returns whether the building's id is correct (matches the pattern b-0-0)
      *
-     * @param building
+     * @param building - building whose id is verified
      * @return true if building's id is correct, false otherwise
      */
     public static boolean verifyBuildingID (Building building) {
@@ -33,7 +34,7 @@ public class Janitor {
     /**
      * Function that returns whether the levels' ids are correct (matches the pattern b-l-0)
      *
-     * @param building
+     * @param building - building whose levels' ids are verified
      * @return true if all levels' ids are correct, false otherwise
      */
     public static boolean verifyLevelsID (Building building) {
@@ -44,7 +45,7 @@ public class Janitor {
     /**
      * Function that returns whether the rooms' ids are correct (matches the pattern b-l-r)
      *
-     * @param building
+     * @param building - building whose rooms' ids are verified
      * @return true if all rooms' ids are correct, false otherwise
      */
     public static boolean verifyRoomsID (Building building) {
@@ -56,7 +57,7 @@ public class Janitor {
     /**
      * Function that returns whether the ids in building are all unique
      *
-     * @param building
+     * @param building - building whose ids are tested for uniqueness
      * @return true if all ids are unique, false otherwise
      */
     public static boolean verifyUnique (Building building) {
@@ -67,10 +68,11 @@ public class Janitor {
     }
 
     /**
-     * Function that returns whether given location is part of another
+     * Function that returns whether given location is part of another -
+     * whether the level is in the right building or room on the right level and in the right building
      *
-     * @param l1 - location that contains the other location
-     * @param l2 - location that is a part the other location
+     * @param l1 - the containing location (building for level, building and level for room)
+     * @param l2 - the contained location (level for building, room for level and building)
      * @param i - what kind of location we are dealing with: 0 for building, 1 for level
      * @return true if l2 is part of l1, false otherwise
      */
