@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "rooms")
 public class Room extends Location {
-    
+
     /**
      * Room's area
      */
