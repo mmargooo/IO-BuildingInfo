@@ -1,4 +1,4 @@
-package pl.put.poznan.buildingInfo;
+package pl.put.poznan.buildingInfo.model;
 
 import org.junit.After;
 import org.junit.Before;
