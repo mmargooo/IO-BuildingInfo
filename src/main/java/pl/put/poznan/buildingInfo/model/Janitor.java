@@ -31,7 +31,7 @@ public class Janitor {
     }
 
     /**
-     * Function that returns whether the levels' id is correct (matches the pattern x-y-0)
+     * Function that returns whether the levels' ids are correct (matches the pattern x-y-0)
      *
      * @param building
      * @return true if all levels' ids are correct, false otherwise
@@ -42,7 +42,7 @@ public class Janitor {
     }
 
     /**
-     * Function that returns whether the rooms' id is correct (matches the pattern x-y-z)
+     * Function that returns whether the rooms' ids are correct (matches the pattern x-y-z)
      *
      * @param building
      * @return true if all rooms' ids are correct, false otherwise
