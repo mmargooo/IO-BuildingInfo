@@ -1,5 +1,6 @@
 package pl.put.poznan.buildingInfo.model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -121,9 +122,9 @@ public class Janitor {
      * @return ArrayList of rooms
      */
     public static ArrayList<Room> getExceedingRooms(Building building) {
-        ArrayList<ArrayList<Room>> ar = (ArrayList) building.getLevels().stream()
+        ArrayList<ArrayList<Room>> ar = (ArrayList<ArrayList<Room>>) building.getLevels().stream()
             .map(level -> Janitor.getExceedingRooms(level, building.getHeatingLimit())).collect(Collectors.toList());
-        return (ArrayList) ar.stream().flatMap(List::stream).collect(Collectors.toList());
+        return (ArrayList<Room>) ar.stream().flatMap(List::stream).collect(Collectors.toList());
     }
 
     /**
@@ -134,7 +135,7 @@ public class Janitor {
      * @return ArrayList of rooms
      */
     public static ArrayList<Room> getExceedingRooms(Level level, float limit) {
-        return (ArrayList) (level.getRooms().stream()
+        return (ArrayList<Room>) (level.getRooms().stream()
             .filter(room -> room.getHeating()/room.getCube() > limit).collect(Collectors.toList()));
     }
 }
