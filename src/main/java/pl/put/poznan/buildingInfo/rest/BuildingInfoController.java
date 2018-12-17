@@ -31,7 +31,7 @@ public class BuildingInfoController {
     private BuildingRepository buildingRepository;
 
     /**
-     * Endpoint that creats Building instance from JSON placed in request's body. Takes JSON and produces JSON.
+     * Endpoint that creates Building instance from JSON placed in request's body. Takes JSON and produces JSON.
      *
      * @param payload - contains JSON to create proper Building instance.
      *

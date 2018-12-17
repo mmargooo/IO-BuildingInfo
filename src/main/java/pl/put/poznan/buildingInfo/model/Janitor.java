@@ -8,6 +8,10 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * Class implementing Visitor design pattern, responsible for retrieving information about building, containing
+ * composite methods that can be used on a building
+ */
 public class Janitor {
 
     /**
