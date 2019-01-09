@@ -16,7 +16,7 @@ public class Level extends Location {
      * List of rooms on the level
      */
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn
     private List<Room> rooms;
 
