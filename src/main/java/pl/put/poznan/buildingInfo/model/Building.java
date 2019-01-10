@@ -16,7 +16,7 @@ public class Building extends Location {
      * List of levels inside the building
      */
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn
     private List<Level> levels;
 
