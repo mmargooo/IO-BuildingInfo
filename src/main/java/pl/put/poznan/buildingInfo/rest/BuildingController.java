@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/api/building")
+@RequestMapping(path = "/api/building")
 public class BuildingController {
 
     private static final Gson gson = new Gson();
@@ -42,5 +42,17 @@ public class BuildingController {
         buildingRepository.save(updatedBuilding);
 
         return new Response("Successfully updated building");
+    }
+
+    @DeleteMapping("/{id}")
+    public Response deleteBuilding(@PathVariable String id) {
+        Building previousBuilding = buildingRepository.findOne(id);
+
+        if (previousBuilding == null) {
+            return new Response("Building with such id doesn't exists");
+        } else {
+            buildingRepository.delete(previousBuilding);
+            return new Response("Successfully deleted building");
+        }
     }
 }
